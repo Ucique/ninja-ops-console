@@ -18,7 +18,7 @@ export function AccountForm() {
   return (
     <div className="card space-y-4">
       <p className="kicker">Account</p>
-      <p className="text-sm text-slate-500">Change your password after first login.</p>
+      <p className="text-sm text-sand-400">Change your password after first login.</p>
       <input
         className="input"
         type="password"
@@ -29,7 +29,7 @@ export function AccountForm() {
       <button className="btn btn-primary" type="button" onClick={handleUpdate}>
         Update password
       </button>
-      {status ? <p className="text-xs text-slate-500">{status}</p> : null}
+      {status ? <p className="text-xs text-sand-400">{status}</p> : null}
     </div>
   );
 }

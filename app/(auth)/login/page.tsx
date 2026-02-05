@@ -31,7 +31,7 @@ export default function LoginPage() {
       <div>
         <p className="kicker">Ninja Ops Console</p>
         <h1 className="text-2xl font-semibold">Sign in to continue</h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-sm text-sand-400">
           Use your local credentials to access the command center.
         </p>
       </div>
@@ -52,12 +52,12 @@ export default function LoginPage() {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
-        {error ? <p className="text-sm text-red-500">{error}</p> : null}
+        {error ? <p className="text-sm text-wine">{error}</p> : null}
         <button className="btn btn-primary w-full" type="submit" disabled={loading}>
           {loading ? "Signing in..." : "Sign in"}
         </button>
       </form>
-      <p className="text-xs text-slate-500 dark:text-slate-400">
+      <p className="text-xs text-sand-400">
         Default seed user: admin@example.com / change-me
       </p>
     </div>

@@ -6,17 +6,18 @@ export default async function ApprovalsPage() {
     <div className="space-y-6">
       <div>
         <p className="kicker">Approvals</p>
-        <h2 className="text-2xl font-semibold">Queue + audit trail</h2>
+        <h2 className="text-2xl font-semibold text-sand-100">Queue + audit trail</h2>
+        <p className="text-sm text-sand-400">Clear, calm, unmistakable decisions.</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         {approvals.map((approval) => (
-          <div key={approval.id} className="card space-y-3">
+          <div key={approval.id} className="panel space-y-3">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-lg font-semibold">{approval.title}</p>
-                <p className="text-xs text-slate-500">{approval.type}</p>
+                <p className="text-lg font-semibold text-sand-100">{approval.title}</p>
+                <p className="text-xs text-sand-400">{approval.type}</p>
               </div>
-              <span className="rounded-full bg-accent/10 px-3 py-1 text-xs text-accent">{approval.status}</span>
+              <span className="rounded-full bg-brass/20 px-3 py-1 text-xs text-brass">{approval.status}</span>
             </div>
             <div className="flex gap-2">
               <button className="btn">Approve</button>
@@ -25,8 +26,8 @@ export default async function ApprovalsPage() {
           </div>
         ))}
         {approvals.length === 0 ? (
-          <div className="card">
-            <p className="text-sm text-slate-500">No approvals yet.</p>
+          <div className="panel">
+            <p className="text-sm text-sand-400">No approvals yet.</p>
           </div>
         ) : null}
       </div>

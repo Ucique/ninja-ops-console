@@ -4,7 +4,7 @@ import { ThemeProvider } from "../components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Ninja Ops Console",
-  description: "Project command center for affiliate operations",
+  description: "Cabinet-style creative operations console for calm, visual planning",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

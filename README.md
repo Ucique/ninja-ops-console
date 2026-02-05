@@ -1,14 +1,23 @@
 # Ninja Ops Console
 
-A local-first project command center for OpenClaw-driven affiliate operations. Built with Next.js App Router, Prisma, SQLite, and Tailwind.
+A local-first, cabinet-style creative operations console for OpenClaw-driven affiliate work. Built with Next.js App Router, Prisma, SQLite, and Tailwind.
 
 ## Features
-- Dashboard with today focus, approvals, and activity feed.
-- Planner (daily + weekly) and Workboard (Kanban) views.
-- Goals, Ideas inbox, Affiliate Library, Approvals queue.
+- Cabinet home with calm, card-based compartments and priority lenses.
+- Planner (daily + weekly) and Workboard (soft Kanban) views.
+- Ideas inbox, Affiliate Library, Approvals queue, Budget console, and Reports shelf.
 - Secured Vault with client-side AES-GCM encryption and PBKDF2 key derivation.
 - OpenClaw Artifacts import (manual paste + optional local file read).
-- Command palette (Cmd/Ctrl + K), light/dark mode, mobile-responsive UI.
+- Command palette (Cmd/Ctrl + K), warm dark-first UI, mobile-responsive layout.
+
+## Product philosophy
+This UI is optimized for highly visual, creative operators:
+- **Warm, dark-first atmosphere** to reduce glare and cognitive load.
+- **Cabinet metaphor** to keep mental domains separated and recognizable.
+- **Cards over tables** with clear spacing to anchor attention.
+- **Priority lenses** (Urgency / Leverage / Calm) to change emphasis without clutter.
+
+For full design tokens and cabinet guidance, see `DESIGN.md`.
 
 ## Prerequisites
 - Node.js LTS (18+)
@@ -43,6 +52,10 @@ You will be prompted to change the password in **Settings → Account**.
 - Vault auto-locks after 10 minutes of inactivity.
 - **Limitations:** This is a local vault. Protect your machine, rotate secrets, and use 2FA on upstream services.
 
+## Roles
+- **OWNER** can access the Vault and edit Budget limits + currency.
+- **OPERATOR** can add expenses and read budget summaries but cannot access the Vault or edit limits.
+
 ## OpenClaw integration
 ### Manual mode (portable)
 Paste artifact content directly into the Artifacts panel in Settings.
@@ -70,3 +83,23 @@ prisma/             # Schema + seed
 - [ ] Able to login with default credentials
 - [ ] Vault unlock/encrypt/decrypt tested locally
 - [ ] OpenClaw artifact import validated
+
+## Run locally
+```bash
+npm install
+cp .env.example .env
+npm run prisma:generate
+npm run prisma:migrate
+npm run seed
+npm run dev
+```
+
+## Run in production
+```bash
+npm install
+cp .env.example .env
+npm run prisma:generate
+npm run prisma:migrate
+npm run build
+npm run start
+```

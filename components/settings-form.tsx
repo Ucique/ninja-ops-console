@@ -27,7 +27,7 @@ export function SettingsForm({ initial }: { initial: Settings }) {
     <div className="card space-y-4">
       <div>
         <p className="kicker">Preferences</p>
-        <p className="text-sm text-slate-500">Tune your working hours and urgency rules.</p>
+        <p className="text-sm text-sand-400">Tune your working hours and urgency rules.</p>
       </div>
       <div className="grid gap-3 md:grid-cols-2">
         <input className="input" value={form.workingHours} onChange={(e) => setForm({ ...form, workingHours: e.target.value })} />
@@ -46,7 +46,7 @@ export function SettingsForm({ initial }: { initial: Settings }) {
       <button className="btn btn-primary" type="button" onClick={handleSave}>
         Save settings
       </button>
-      {status ? <p className="text-xs text-slate-500">{status}</p> : null}
+      {status ? <p className="text-xs text-sand-400">{status}</p> : null}
     </div>
   );
 }
