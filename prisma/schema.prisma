@@ -1,0 +1,188 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  name               String?
+  passwordHash       String
+  mustChangePassword Boolean   @default(true)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  sessions           Session[]
+  projects           Project[]
+  tasks              Task[]
+  approvals          ApprovalItem[]
+  auditLogs          AuditLog[]
+  vaultItems         VaultItem[]
+  settings           UserSettings?
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model UserSettings {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id])
+  workingHours     String   @default("09:00-18:00")
+  timezone         String   @default("UTC")
+  priorityRules    String   @default("Urgent: due < 48h, High: due < 7d")
+  urgentDefinition String   @default("High impact or due in 48 hours")
+  openclawPaths    String   @default("/home/clawd/.openclaw/canvas/affiliate-mission-control,/home/clawd/.openclaw/canvas/ops,/home/clawd/.openclaw/canvas/kpi")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  status      String   @default("active")
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tasks       Task[]
+  goals       Goal[]
+}
+
+model Task {
+  id                String          @id @default(cuid())
+  title             String
+  description       String?
+  status            String          @default("Backlog")
+  priority          String          @default("Medium")
+  urgency           String          @default("Normal")
+  dueDate           DateTime?
+  tags              String          @default("")
+  checklist         String          @default("[]")
+  approvalsRequired Boolean         @default(false)
+  ownerId           String
+  owner             User            @relation(fields: [ownerId], references: [id])
+  projectId         String?
+  project           Project?        @relation(fields: [projectId], references: [id])
+  scheduleBlocks    ScheduleBlock[]
+  comments          Note[]
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model ScheduleBlock {
+  id        String   @id @default(cuid())
+  taskId    String?
+  task      Task?    @relation(fields: [taskId], references: [id])
+  title     String
+  startTime DateTime
+  endTime   DateTime
+  notes     String?
+}
+
+model Goal {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  type        String   @default("Long-term")
+  progress    Int      @default(0)
+  milestones  String   @default("[]")
+  projectId   String?
+  project     Project? @relation(fields: [projectId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Idea {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  status      String   @default("Inbox")
+  createdAt   DateTime @default(now())
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  body      String
+  taskId    String?
+  task      Task?    @relation(fields: [taskId], references: [id])
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model ApprovalItem {
+  id        String   @id @default(cuid())
+  title     String
+  type      String   @default("publish")
+  status    String   @default("pending")
+  reason    String?
+  ownerId   String
+  owner     User     @relation(fields: [ownerId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model AffiliateProgram {
+  id          String   @id @default(cuid())
+  name        String
+  network     String
+  commission  String
+  cookieDays  Int
+  status      String   @default("applied")
+  notes       String?
+  createdAt   DateTime @default(now())
+  links       AffiliateLink[]
+}
+
+model AffiliateLink {
+  id           String            @id @default(cuid())
+  programId    String
+  program      AffiliateProgram  @relation(fields: [programId], references: [id])
+  label        String
+  destination  String
+  utmTemplate  String?
+  tags         String?
+  whereUsed    String?
+  createdAt    DateTime          @default(now())
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  achievedAt  DateTime @default(now())
+}
+
+model VaultItem {
+  id          String   @id @default(cuid())
+  name        String
+  category    String
+  tags        String
+  encrypted   String
+  iv          String
+  salt        String
+  metadata    String?
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  entity    String
+  entityId  String
+  message   String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
