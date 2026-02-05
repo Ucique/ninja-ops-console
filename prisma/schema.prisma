@@ -13,6 +13,7 @@ model User {
   name               String?
   passwordHash       String
   mustChangePassword Boolean   @default(true)
+  role               String    @default("OWNER")
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
   sessions           Session[]
@@ -22,6 +23,8 @@ model User {
   auditLogs          AuditLog[]
   vaultItems         VaultItem[]
   settings           UserSettings?
+  budgetSettings     BudgetSettings?
+  expenses           Expense[]
 }
 
 model Session {
@@ -185,4 +188,30 @@ model AuditLog {
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
+}
+
+model BudgetSettings {
+  id           String   @id @default(cuid())
+  ownerId      String   @unique
+  owner        User     @relation(fields: [ownerId], references: [id])
+  currency     String   @default("USD")
+  monthlyLimit Float    @default(5000)
+  weeklyLimit  Float?
+  resetDay     Int      @default(1)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  expenses     Expense[]
+}
+
+model Expense {
+  id           String          @id @default(cuid())
+  amount       Float
+  category     String
+  note         String?
+  date         DateTime
+  createdById  String
+  createdBy    User            @relation(fields: [createdById], references: [id])
+  settingsId   String
+  settings     BudgetSettings  @relation(fields: [settingsId], references: [id])
+  createdAt    DateTime        @default(now())
 }

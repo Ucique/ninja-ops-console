@@ -13,6 +13,7 @@ async function main() {
       name: "Ops Admin",
       passwordHash,
       mustChangePassword: true,
+      role: "OWNER",
       settings: {
         create: {},
       },
@@ -102,6 +103,58 @@ async function main() {
       message: "Seed data loaded",
       userId: user.id,
     },
+  });
+
+  const budgetSettings = await prisma.budgetSettings.create({
+    data: {
+      ownerId: user.id,
+      currency: "USD",
+      monthlyLimit: 12000,
+      weeklyLimit: 2800,
+      resetDay: 1,
+    },
+  });
+
+  await prisma.expense.createMany({
+    data: [
+      {
+        amount: 420,
+        category: "Tools/Subscriptions",
+        note: "Analytics stack",
+        date: new Date(),
+        createdById: user.id,
+        settingsId: budgetSettings.id,
+      },
+      {
+        amount: 850,
+        category: "Ads",
+        note: "Experiment budget",
+        date: new Date(),
+        createdById: user.id,
+        settingsId: budgetSettings.id,
+      },
+      {
+        amount: 300,
+        category: "Contractors",
+        note: "Design sprint",
+        date: new Date(),
+        createdById: user.id,
+        settingsId: budgetSettings.id,
+      },
+    ],
+  });
+
+  await prisma.achievement.createMany({
+    data: [
+      {
+        title: "First affiliate approval",
+        description: "Secured the top-priority program.",
+      },
+      {
+        title: "Landing page shipped",
+        description: "Version 1 is live and tracking.",
+      },
+    ],
   });
 }
 

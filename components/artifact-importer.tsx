@@ -26,7 +26,7 @@ export function ArtifactImporter() {
     <div className="card space-y-4">
       <div>
         <p className="kicker">Artifacts</p>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-sand-400">
           Import OpenClaw outputs by pasting a local path or manual content.
         </p>
       </div>
@@ -41,7 +41,7 @@ export function ArtifactImporter() {
           Import file
         </button>
       </div>
-      {status ? <p className="text-xs text-amber-500">{status}</p> : null}
+      {status ? <p className="text-xs text-brass">{status}</p> : null}
       <textarea
         className="input h-40"
         placeholder="Paste artifact content manually..."

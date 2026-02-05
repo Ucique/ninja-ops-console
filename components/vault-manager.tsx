@@ -169,13 +169,13 @@ export function VaultManager({ initialItems }: { initialItems: VaultItem[] }) {
             {unlocked ? "Vault unlocked" : "Unlock"}
           </button>
         </form>
-        <p className="text-xs text-slate-500">Vault auto-locks after 10 minutes of inactivity.</p>
+        <p className="text-xs text-sand-400">Vault auto-locks after 10 minutes of inactivity.</p>
       </div>
       <div className="card space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="kicker">Add entry</p>
-            <p className="text-sm text-slate-500">Encrypt before saving to SQLite.</p>
+            <p className="text-sm text-sand-400">Encrypt before saving to SQLite.</p>
           </div>
           <div className="flex gap-2">
             <button className="btn" type="button" onClick={handleExport}>
@@ -202,7 +202,7 @@ export function VaultManager({ initialItems }: { initialItems: VaultItem[] }) {
           <div key={item.id} className="card space-y-3">
             <div>
               <p className="text-lg font-semibold">{item.name}</p>
-              <p className="text-xs text-slate-500">{item.category} · {item.tags}</p>
+              <p className="text-xs text-sand-400">{item.category} · {item.tags}</p>
             </div>
             <button className="btn" type="button" onClick={() => handleReveal(item)}>
               Reveal for 15s
@@ -216,7 +216,7 @@ export function VaultManager({ initialItems }: { initialItems: VaultItem[] }) {
         ))}
         {sortedItems.length === 0 ? (
           <div className="card">
-            <p className="text-sm text-slate-500">No vault entries yet.</p>
+            <p className="text-sm text-sand-400">No vault entries yet.</p>
           </div>
         ) : null}
       </div>

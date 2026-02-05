@@ -10,6 +10,7 @@ export type SessionUser = {
   email: string;
   name: string | null;
   mustChangePassword: boolean;
+  role: "OWNER" | "OPERATOR";
 };
 
 export async function createSession(userId: string) {
@@ -62,6 +63,7 @@ export async function getSessionUser(): Promise<SessionUser | null> {
     email: session.user.email,
     name: session.user.name,
     mustChangePassword: session.user.mustChangePassword,
+    role: session.user.role === "OPERATOR" ? "OPERATOR" : "OWNER",
   };
 }
 
