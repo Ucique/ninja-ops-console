@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ninja Ops Cabinet</title>
+    <link rel="stylesheet" href="assets/app.css" />
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <div>
+          <h1>Cabinet / Pult</h1>
+          <p>Warm, tactile control desk. Drag compartments, edit in place, and track the budget.</p>
+        </div>
+        <div class="header-actions">
+          <button data-action="add-card">New card</button>
+          <button class="secondary" data-action="export">Export JSON</button>
+          <button class="secondary" data-action="import">Import JSON</button>
+          <input id="import-json" type="file" accept="application/json" hidden />
+        </div>
+      </header>
+
+      <section class="cabinet-grid" aria-live="polite"></section>
+
+      <footer>
+        Cabinet data saves automatically to your browser storage. Use Export/Import to move it.
+      </footer>
+    </main>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>

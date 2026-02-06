@@ -1,0 +1,134 @@
+{
+  "cards": [
+    {
+      "id": "card-today",
+      "title": "🔥 TODAY / URGENT",
+      "description": "The three moves that unlock everything else.",
+      "checklist": [
+        {"id": "t1", "text": "Follow up on partner approval", "done": false},
+        {"id": "t2", "text": "Finalize landing page copy", "done": false},
+        {"id": "t3", "text": "Ship ads brief to VA", "done": false}
+      ],
+      "tags": ["critical", "high-touch"],
+      "urgency": 5,
+      "leverage": 4,
+      "type": "standard"
+    },
+    {
+      "id": "card-money",
+      "title": "⚡ MONEY / HIGH LEVERAGE",
+      "description": "Active spend, runway, and revenue levers.",
+      "checklist": [
+        {"id": "m1", "text": "Review CPA trend", "done": false},
+        {"id": "m2", "text": "Negotiate hosting discount", "done": false}
+      ],
+      "tags": ["leverage", "budget"],
+      "urgency": 3,
+      "leverage": 5,
+      "type": "money"
+    },
+    {
+      "id": "card-strategy",
+      "title": "🧠 STRATEGY / THINKING",
+      "description": "Long-arc ideas and strategic decisions.",
+      "checklist": [
+        {"id": "s1", "text": "Map audience journey", "done": false},
+        {"id": "s2", "text": "Draft Q3 experimentation plan", "done": false}
+      ],
+      "tags": ["deep-work"],
+      "urgency": 2,
+      "leverage": 4,
+      "type": "standard"
+    },
+    {
+      "id": "card-waiting",
+      "title": "⏳ WAITING / BLOCKED",
+      "description": "Dependencies and approvals queued up.",
+      "checklist": [
+        {"id": "w1", "text": "Legal review of terms", "done": false},
+        {"id": "w2", "text": "Client feedback on creative", "done": false}
+      ],
+      "tags": ["blocked"],
+      "urgency": 3,
+      "leverage": 2,
+      "type": "standard"
+    },
+    {
+      "id": "card-ideas",
+      "title": "🌱 IDEAS / RESEARCH",
+      "description": "Collect experiments, sparks, and finds.",
+      "checklist": [
+        {"id": "i1", "text": "Listen to competitor podcast", "done": false}
+      ],
+      "tags": ["inbox", "research"],
+      "urgency": 1,
+      "leverage": 3,
+      "type": "standard"
+    },
+    {
+      "id": "card-weekly",
+      "title": "📆 WEEKLY PLAN",
+      "description": "Drag blocks to shape the week.",
+      "checklist": [
+        {"id": "wp1", "text": "Monday: Creator outreach", "done": false},
+        {"id": "wp2", "text": "Tuesday: Budget review", "done": false}
+      ],
+      "tags": ["schedule"],
+      "urgency": 3,
+      "leverage": 3,
+      "type": "weekly",
+      "weekBlocks": [
+        {"id": "d1", "label": "Mon Focus"},
+        {"id": "d2", "label": "Tue Launch"},
+        {"id": "d3", "label": "Wed Review"},
+        {"id": "d4", "label": "Thu Build"},
+        {"id": "d5", "label": "Fri Wrap"}
+      ]
+    },
+    {
+      "id": "card-affiliate",
+      "title": "🔗 AFFILIATE LIBRARY",
+      "description": "Programs, links, and notes.",
+      "checklist": [
+        {"id": "a1", "text": "Update payout sheet", "done": false},
+        {"id": "a2", "text": "Add UTM templates", "done": false}
+      ],
+      "tags": ["partners", "links"],
+      "urgency": 2,
+      "leverage": 4,
+      "type": "standard"
+    },
+    {
+      "id": "card-kpi",
+      "title": "📊 KPI / REPORTS",
+      "description": "Daily pulse + weekly scorecards.",
+      "checklist": [
+        {"id": "k1", "text": "Fill daily traffic snapshot", "done": false},
+        {"id": "k2", "text": "Export weekly report", "done": false}
+      ],
+      "tags": ["reporting"],
+      "urgency": 2,
+      "leverage": 3,
+      "type": "standard"
+    },
+    {
+      "id": "card-vault",
+      "title": "🗝️ VAULT",
+      "description": "Locked. Sensitive credentials live here.",
+      "checklist": [],
+      "tags": ["locked"],
+      "urgency": 4,
+      "leverage": 5,
+      "type": "vault"
+    }
+  ],
+  "budget": {
+    "currency": "USD",
+    "weeklyLimit": 1200,
+    "monthlyLimit": 4200,
+    "expenses": [
+      {"id": "e1", "amount": 120, "category": "Ads", "note": "Test campaign", "date": "2024-04-01"},
+      {"id": "e2", "amount": 64, "category": "Tools", "note": "Analytics", "date": "2024-04-03"}
+    ]
+  }
+}
